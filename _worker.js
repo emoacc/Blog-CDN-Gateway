@@ -1,9 +1,7 @@
 let urls = [
-	'https://blog.cmliussss.com#Cloudflare CDN',
-	'https://fastly.blog.cmliussss.com#Fastly CDN',
-	'https://gcore.blog.cmliussss.com#Gcore CDN',
-	'https://vercel.blog.cmliussss.com#Vercel CDN',
-	'https://xn--1uto7rutmzjk.us.kg#备用地址'
+	'https://uomi.cc#悠米商城丨地址一',
+	'https://hk.uomi.cc#悠米商城丨地址二',
+	'https://jp.uomi.cc#悠米商城丨地址三'
 ];
 
 export default {
@@ -16,11 +14,10 @@ export default {
 		if (env.URL) urls = await ADD(env.URL);
 		
 		const ads = env.ADS || 'google.com, pub-9350003957494520, DIRECT, f08c47fec0942fa0';
-		const 网站图标 = env.ICO || 'https://raw.cmliussss.com/favicon.ico';
-		const 网站头像 = env.PNG || 'https://raw.cmliussss.com/IMG_0038.png';
-		const 网络备案 = env.BEIAN || `<a href='https://icp.gov.moe/'>萌ICP备-20070707号</a>`;
-		const 网页标题 = env.TITLE || 'BlogCDN 智能访问网关';
-		const 站点名称 = env.NAME || 'CMLiussss Blog';
+		const 网站图标 = env.ICO || 'https://uomi.cc/favicon.svg';
+		const 网站头像 = env.PNG || 'https://uomi.cc/favicon.svg';
+		const 网页标题 = env.TITLE || '悠米商城丨永久发布页';
+		const 站点名称 = env.NAME || '悠米商城丨永久发布页';
 		if (url.pathname.toLowerCase() == '/ads.txt') {
 			return new Response(ads, {
 				headers: {
@@ -31,7 +28,7 @@ export default {
 			return fetch(网站图标);
 		} else {
 			// 先测速，不加载背景图片
-			let img = 'https://raw.cmliussss.com/keqing1080p.jpg'; // 默认图片
+			let img = 'https://api.bimg.cc/today?w=1920&h=1080&mkt=zh-CN'; // 默认图片
 			if (env.IMG) {
 				const imgs = await ADD(env.IMG);
 				img = imgs[Math.floor(Math.random() * imgs.length)];
@@ -256,9 +253,6 @@ export default {
 					</div>
 					<h1>${网页标题}</h1>
 					<ul class="description" id="urls"></ul>
-					<div class="beian-info" style="text-align: center; font-size: 13px;">
-						${网络备案}
-					</div>
 				</div>
 				<script>
 					const urls = ${JSON.stringify(urls)};
